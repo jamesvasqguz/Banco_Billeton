@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="banco">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="GERENTE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" type="xs:unsignedInt" />
+              <xs:element name="NOMBRE" type="xs:string" />
+              <xs:element name="TURNO" type="xs:string" />
+              <xs:element name="DPI" type="xs:unsignedLong" />
+              <xs:element name="DIRECCION" type="xs:string" />
+              <xs:element name="SEXO" type="xs:string" />
+              <xs:element name="PASSWORD" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CAJERO">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" type="xs:unsignedInt" />
+              <xs:element name="NOMBRE" type="xs:string" />
+              <xs:element name="TURNO" type="xs:string" />
+              <xs:element name="DPI" type="xs:unsignedLong" />
+              <xs:element name="DIRECCION" type="xs:string" />
+              <xs:element name="SEXO" type="xs:string" />
+              <xs:element name="PASSWORD" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CLIENTE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" type="xs:unsignedInt" />
+              <xs:element name="NOMBRE" type="xs:string" />
+              <xs:element name="DPI" type="xs:unsignedLong" />
+              <xs:element name="BIRTH" type="xs:date" />
+              <xs:element name="DIRECCION" type="xs:string" />
+              <xs:element name="SEXO" type="xs:string" />
+              <xs:element name="CUENTAS">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="CUENTA">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="CODIGO" type="xs:unsignedInt" />
+                          <xs:element name="CREADA" type="xs:date" />
+                          <xs:element name="CREDITO" type="xs:decimal" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="DPI-PDF" type="xs:string" />
+              <xs:element name="PASSWORD" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TRANSACCION">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODIGO" type="xs:unsignedShort" />
+              <xs:element name="CUENTA-ID" type="xs:unsignedInt" />
+              <xs:element name="FECHA" type="xs:date" />
+              <xs:element name="HORA" type="xs:time" />
+              <xs:element name="TIPO" type="xs:string" />
+              <xs:element name="MONTO" type="xs:decimal" />
+              <xs:element name="CAJERO-ID" type="xs:unsignedInt" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
