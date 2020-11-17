@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="15" bottomMargin="20" uuid="27e60d8e-21e4-4d2c-8066-2f378bd00a32">
+    <property name="ireport.zoom" value="1.5"/>
+    <property name="ireport.x" value="0"/>
+    <property name="ireport.y" value="0"/>
+    <field name="codigo" class="java.lang.String">
+    </field>
+    <field name="nombre" class="java.lang.String">
+    </field>
+    <field name="dpi" class="java.lang.String">
+    </field>
+    <field name="cuenta" class="java.lang.String">
+    </field>
+    <field name="saldo" class="java.lang.String">
+    </field>
+    <background>
+        <band/>
+    </background>
+    <title>
+        <band height="72">
+            <frame>
+                <reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="8cc0bfbf-18ab-4513-8c01-28ebffe792c5"/>
+                <staticText>
+                    <reportElement x="20" y="20" width="306" height="43" forecolor="#FFFFFF" uuid="d80182d2-941b-4564-aee4-d11d95c30b3e"/>
+                    <textElement>
+                        <font size="34" isBold="true"/>
+                    </textElement>
+                    <text><![CDATA[Banco Billeton]]></text>
+                </staticText>
+                <staticText>
+                    <reportElement x="20" y="72" width="555" height="20" forecolor="#FFFFFF" uuid="31f8b5e5-771b-4dd7-a476-c1a2ff2f2971"/>
+                    <textElement>
+                        <font size="12" isBold="false"/>
+                    </textElement>
+                    <text><![CDATA[Los 10 clientes con mas dinero en sus cuentas.]]></text>
+                </staticText>
+            </frame>
+        </band>
+    </title>
+    <pageHeader>
+        <band/>
+    </pageHeader>
+    <columnHeader>
+        <band height="29">
+            <line>
+                <reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="5822860b-5647-4c3f-a4f4-3afca04f9433"/>
+            </line>
+            <staticText>
+                <reportElement x="0" y="2" width="72" height="20" uuid="f3f4a174-2ddd-4ced-9c84-ef1c7d01f7bf"/>
+                <text><![CDATA[codigo]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="72" y="2" width="154" height="20" uuid="969c4aba-44b1-453e-a42a-8bb936702d43"/>
+                <text><![CDATA[nombre]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="238" y="2" width="100" height="20" uuid="9a21a0d2-378a-4dfe-a8a5-1b4604542295"/>
+                <text><![CDATA[dpi]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="357" y="1" width="100" height="20" uuid="8304aef5-377f-4762-967c-89b13b9b3b3a"/>
+                <text><![CDATA[cuenta]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="457" y="2" width="100" height="20" uuid="65eb102a-b3c7-4083-8b69-1a9216c1716e"/>
+                <text><![CDATA[saldo]]></text>
+            </staticText>
+        </band>
+    </columnHeader>
+    <detail>
+        <band height="25">
+            <line>
+                <reportElement positionType="FixRelativeToBottom" x="0" y="17" width="555" height="1" uuid="b8342f21-1611-4fa9-8382-0af420791c6c"/>
+            </line>
+            <textField>
+                <reportElement x="0" y="5" width="72" height="20" uuid="becd7ed3-98a6-4fca-b437-0f43e2986fb7"/>
+                <textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="72" y="5" width="154" height="20" uuid="ac8d3783-e865-4054-94d3-29b1ac723edc"/>
+                <textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="238" y="5" width="100" height="20" uuid="038ab9fb-2051-42fd-8247-7ae54a48a646"/>
+                <textFieldExpression><![CDATA[$F{dpi}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="357" y="4" width="100" height="20" uuid="ee6edf5f-a0e6-4788-afb6-c8732cdd45e3"/>
+                <textFieldExpression><![CDATA[$F{cuenta}]]></textFieldExpression>
+            </textField>
+            <textField>
+                <reportElement x="457" y="5" width="100" height="20" uuid="c40815a4-adde-4cb5-86c8-355ce9d02055"/>
+                <textFieldExpression><![CDATA[$F{saldo}]]></textFieldExpression>
+            </textField>
+        </band>
+    </detail>
+    <columnFooter>
+        <band/>
+    </columnFooter>
+    <pageFooter>
+        <band height="17">
+            <textField>
+                <reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="0c673955-eeb4-4fd7-8858-d93d52aafff7"/>
+                <textElement textAlignment="Right"/>
+                <textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+            </textField>
+            <textField evaluationTime="Report">
+                <reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="3d7970ec-688a-4e35-ab48-d33108a2cceb"/>
+                <textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+            </textField>
+            <textField pattern="EEEEE dd MMMMM yyyy">
+                <reportElement x="0" y="4" width="100" height="13" uuid="054324e6-e63b-4cb4-89d1-cac0ac0909cc"/>
+                <textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+            </textField>
+        </band>
+    </pageFooter>
+    <summary>
+        <band/>
+    </summary>
+</jasperReport>

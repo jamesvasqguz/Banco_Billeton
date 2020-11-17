@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="15" bottomMargin="20" uuid="27e60d8e-21e4-4d2c-8066-2f378bd00a32">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="Cliente" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Lim1" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Lim2" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT T.codigo,T.cuenta,I.nombre,T.fecha,T.monto FROM TRANSACCION T INNER JOIN CUENTA C ON T.cuenta=C.codigo AND T.monto>=$P{Lim1} INNER JOIN CLIENTE I ON I.codigo=C.cliente;]]>
+	</queryString>
+	<field name="codigo" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="cuenta" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="monto" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="8cc0bfbf-18ab-4513-8c01-28ebffe792c5"/>
+				<staticText>
+					<reportElement x="20" y="20" width="306" height="43" forecolor="#FFFFFF" uuid="d80182d2-941b-4564-aee4-d11d95c30b3e"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Banco Billeton]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="72" width="555" height="20" forecolor="#FFFFFF" uuid="31f8b5e5-771b-4dd7-a476-c1a2ff2f2971"/>
+					<textElement>
+						<font size="12" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Clientes con transacciones monetarias mayores a un límite establecido. 
+]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="5822860b-5647-4c3f-a4f4-3afca04f9433"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="67" height="20" uuid="39948c10-3bd4-4f8b-9d83-e62442744ad3"/>
+				<text><![CDATA[Codigo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="8" width="86" height="20" uuid="50f138be-4579-437d-b9bd-a0c11a14693c"/>
+				<text><![CDATA[Cuenta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="8" width="204" height="20" uuid="4cff4ab0-e82b-4543-861c-300ce2123be2"/>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="384" y="8" width="76" height="20" uuid="3ea3e044-ac66-4fef-b7a1-10199ba724f4"/>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="8" width="95" height="20" uuid="6ca92aed-3c02-457c-b7bf-ea01be33eff5"/>
+				<text><![CDATA[Monto(Q)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="17" width="555" height="1" uuid="b8342f21-1611-4fa9-8382-0af420791c6c"/>
+			</line>
+			<textField>
+				<reportElement x="0" y="5" width="67" height="20" uuid="e3e7f295-419e-4d1d-aabd-58bf37704856"/>
+				<textFieldExpression><![CDATA[$F{codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="5" width="86" height="20" uuid="75fe2490-f3b5-4497-9d7d-e963fbc41a88"/>
+				<textFieldExpression><![CDATA[$F{cuenta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="153" y="5" width="204" height="20" uuid="1f61b191-7e4c-4d1b-94b4-9943f3bcb7e6"/>
+				<textFieldExpression><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="5" width="103" height="20" uuid="7150ff2d-b0b0-4dd4-83c3-536f77b8e8d0"/>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="460" y="5" width="95" height="20" uuid="f188c57e-ac1a-48b1-a6a3-ded1bab2b502"/>
+				<textFieldExpression><![CDATA[$F{monto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="0c673955-eeb4-4fd7-8858-d93d52aafff7"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="3d7970ec-688a-4e35-ab48-d33108a2cceb"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="054324e6-e63b-4cb4-89d1-cac0ac0909cc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

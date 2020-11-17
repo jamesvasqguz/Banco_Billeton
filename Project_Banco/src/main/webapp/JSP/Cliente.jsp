@@ -8,47 +8,48 @@
         <title>Cliente</title>
     </head>
     <body>
+        <%
+            HttpSession sesion = request.getSession();
+            if (sesion.getAttribute("Loggeado") == null || sesion.getAttribute("Loggeado").equals("0")) {
+                response.sendRedirect("Login.jsp");
+            }
+        %>
         <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="#">Navbar</a>
+            <a class="navbar-brand" href="Cliente.jsp"><%=sesion.getAttribute("username")%></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
-                    </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Mis Datos</a>
+                        <a class="nav-link" href="InformacionCliente.jsp">Mis Datos</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cuentas
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Mis Cuentas
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Estado de Cuenta</a>
-                            <a class="dropdown-item" href="#">Movimientos</a>
+                            <a class="dropdown-item" href="EstadoCuenta.jsp">Estado de Cuenta</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Asociaciones
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">Solicitar Asociacion</a>
-                            <a class="dropdown-item" href="#">Aceptar Asociacion</a>
+                            <a class="dropdown-item" href="SolicitarAsociacion.jsp">Solicitar Asociacion</a>
+                            <a class="dropdown-item" href="Solicitudes.jsp">Aceptar Asociacion</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Asociaciones</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Transferencias</a>
+                        <a class="nav-link" href="Transferencias.jsp">Transferencias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reportes</a>
+                        <a class="nav-link" href="ReportesCliente.jsp">Reportes</a>
                     </li>
                 </ul>
-                <form class="form-inline my-2 my-lg-0">
+                <form class="form-inline my-2 my-lg-0" action="CerrarSesion.jsp">
                     <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Salir<img src="../Imagenes/out.svg" width="30px"></button>
                 </form>
             </div>

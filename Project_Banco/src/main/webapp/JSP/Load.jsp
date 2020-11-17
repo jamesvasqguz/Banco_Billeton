@@ -1,3 +1,4 @@
+<%@page import="DataBase.Archivos"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -8,21 +9,24 @@
         <title>Carga de Archivos</title>
     </head>
     <body>
+        <%
+            Archivos arch = new Archivos();
+        %>
         <div class="container">
             <div class="row justify-content-center pt-5 mt-5 mr-1">
                 <div class="col-md-4 formulario">
                     <div class="form-group text-center">
                         <h1 class="text-light">CARGA DE ARCHIVOS</h1>
-                        <form method="POST" enctype="multipart/form-data" action="/Project_Banco/ControladorCarga">
-                            <label class="text-light" for="dataFile">Seleccione archivo que contiene los registros del Sistema:</label>
+                        <form action="/Project_Banco/ControladorXml" method="POST">
+                            <label class="text-light">Seleccione archivo que contiene los registros del Sistema:</label>
                             <br>
-                            <input type="file" name="dataFile" class="btn btn-info"/>
-                            <br>
-                            <br>
-                            <br>
+                            <input type="file" name="carga" class="form-control" required="Campo Obligatorio"/>
                             <div class="dropdown-divider"></div>
-                            <button type="submit" class="btn btn-success">CARGAR ARCHIVO</button>
-                        </form>
+                            <button type="submit" name="btn" class="btn btn-success">CARGAR ARCHIVO</button>
+                            <br>
+                            <br>
+                        </form> 
+                        <a href="Login.jsp" class="btn btn-primary">Iniciar Sesion<img src="../Imagenes/lo.svg" width="50px"/></a>
                     </div>
                 </div>
             </div>

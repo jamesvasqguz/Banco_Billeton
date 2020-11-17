@@ -19,10 +19,10 @@
                             <input type="text" name="user" class="form-control" placeholder="Ingrese su Usuario"/>
                         </div>
                         <div class="form-group mx-sm-4 pb-3">
-                            <input type="password" name="pass" class="form-control" placeholder="Ingrese su Contraseña"/>
+                            <input type="password" name="pass" id="pass1" class="form-control" placeholder="Ingrese su Contraseña"/>
                         </div>
                         <div class="form-group mx-sm-4 pb-3">
-                            <img src="../Imagenes/eye.svg" id="boton" class="boton"><a>Mostrar Contraseña</a>
+                            <img src="../Imagenes/eye.svg" id="boton1" class="boton"><a>Mostrar Contraseña</a>
                         </div>
                         <div class="dropdown-divider"></div>
                         <div class="form-group mx-sm-4 pb-2">
@@ -33,16 +33,16 @@
             </div>
         </div>
         <script>
-            var boton = document.getElementById('boton')
-            var inpt = document.getElementById('pass');
-            boton.addEventListener('click', show);
-            function show() {
+            var btn = document.getElementById('boton1');
+            var inpt = document.getElementById('pass1');
+            btn.addEventListener('click', mostrarContraseña);
+            function mostrarContraseña() {
                 if (inpt.type == "password") {
                     inpt.type = "text";
-                    boton.src = "../Imagenes/eye-off.svg";
+                    btn.src = "../Imagenes/eye-off.svg";
                 } else {
                     inpt.type = "password";
-                    boton.src = "../Imagenes/eye.svg";
+                    btn.src = "../Imagenes/eye.svg";
                 }
             }
         </script>
