@@ -29,6 +29,7 @@ public class ControladorLogin extends HttpServlet {
     private int registro;
     private String rol;
     private String name;
+    private String turno;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -123,11 +124,13 @@ public class ControladorLogin extends HttpServlet {
                             if (rs.next()) {
                                 HttpSession sesion = request.getSession();
                                 name = rs.getString("nombre");
-                                System.out.println("nombre: " + name);
+                                turno = rs.getString("turno");
+                                System.out.println("nombre: " + name+" Turno: "+turno);
                                 sesion.setAttribute("Loggeado", "1");
                                 sesion.setAttribute("username", name);
                                 sesion.setAttribute("id", registro);
                                 sesion.setAttribute("rol", rol);
+                                sesion.setAttribute("turno", turno);
                                 response.sendRedirect("JSP/Cajero.jsp");
                             }
                         } catch (SQLException e) {

@@ -10,19 +10,17 @@ import java.util.ArrayList;
  *
  * @author jara
  */
-public class GReporte4 {
-
-    GReporte4 reporteHallado;
+public class GReporte5 {
+    GReporte5 reporteHallado;
     Connection cn = null;
     PreparedStatement ps = null;
     ResultSet rs = null;
     private int codigo;
     private String nombre;
     private String dpi;
-    private int cuenta;
-    private double saldo;
+    private String sexo;
 
-    public GReporte4() {
+    public GReporte5() {
     }
 
     public int getCodigo() {
@@ -49,38 +47,32 @@ public class GReporte4 {
         this.dpi = dpi;
     }
 
-    public int getCuenta() {
-        return cuenta;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setCuenta(int cuenta) {
-        this.cuenta = cuenta;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
-
-    public double getSaldo() {
-        return saldo;
-    }
-
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
-    }
-
-    public ArrayList<GReporte4> cuentasMasDinero() {
-        ArrayList<GReporte4> list = new ArrayList<GReporte4>();
+    public ArrayList<GReporte5> clientesSinTransaccion(String fecha1, String fecha2) {
+        ArrayList<GReporte5> list = new ArrayList<GReporte5>();
+        
+        System.out.println("fecha 1: "+fecha1+" fecha 2: "+fecha2);
         try {
-            String sql = "SELECT distinct cl.codigo as codigo,cl.nombre,cl.dpi,c.codigo as cuenta,c.saldo FROM CLIENTE cl INNER JOIN CUENTA c ON cl.codigo = c.cliente  ORDER BY saldo DESC LIMIT 10;";
+            String sql = "SELECT cl.codigo,cl.nombre,cl.dpi,cl.sexo from CLIENTE cl INNER JOIN  (SELECT * FROM CUENTA c WHERE NOT EXISTS (SELECT * FROM TRANSACCION t WHERE c.codigo = t.cuenta AND t.fecha BETWEEN ? AND ? )) AS b ON b.cliente = cl.codigo;";
             cn = ConexionDB.conector();
             ps = cn.prepareStatement(sql);
+            ps.setString(1, fecha1);
+            ps.setString(2, fecha2);
             rs = ps.executeQuery();
             if (rs.next()) {
                 System.out.println("Se encontró el registro");
                 do {
-                    GReporte4 g = new GReporte4();
-                    g.setCodigo(rs.getInt("codigo"));
+                    GReporte5 g = new GReporte5();
+                    g.setCodigo(rs.getInt("cl.codigo"));
                     g.setNombre(rs.getString("cl.nombre"));
                     g.setDpi(rs.getString("cl.dpi"));
-                    g.setCuenta(rs.getInt("cuenta"));
-                    g.setSaldo(rs.getDouble("c.saldo"));
+                    g.setSexo(rs.getString("cl.sexo"));
                     reporteHallado = g;
                     list.add(reporteHallado);
                 } while (rs.next());

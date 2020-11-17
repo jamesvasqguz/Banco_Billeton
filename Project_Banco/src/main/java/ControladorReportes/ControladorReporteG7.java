@@ -1,9 +1,10 @@
 package ControladorReportes;
 
-import Backend.GReporte2;
+import Backend.GReporte4;
 import Backend.GReporte7;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -24,26 +25,30 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 /**
  *
  * @author jara
  */
-@WebServlet("/ControladorReporteG2")
-public class ControladorReporteG2 extends HttpServlet {
-    GReporte2 r2 = new GReporte2();
-    GReporte2 rr2 = new GReporte2();
+@WebServlet("/ControladorReporteG7")
+public class ControladorReporteG7 extends HttpServlet {
+
+    GReporte7 r7 = new GReporte7();
+    GReporte7 rr7 = new GReporte7();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-       try {
-            String codigo = String.valueOf(request.getParameter("cd"));
-            int gerente = Integer.parseInt(codigo);
-            System.out.println(" "+gerente);
-            response.setContentType("application/pdf");
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ReporteGerente2.pdf");
-            List<GReporte2> lista = r2.transLimit1(gerente);
 
-            File file = new File(request.getServletContext().getRealPath("/Reports/GReport4.jrxml"));
+        try {
+            String fecha1 = String.valueOf(request.getParameter("f1"));
+            String fecha2 = String.valueOf(request.getParameter("f2"));
+            System.out.println(""+fecha1+" "+fecha2);
+            response.setContentType("application/pdf");
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ReporteGerent7.pdf");
+            List<GReporte7> lista = r7.cajeroMasTransacciones(fecha1, fecha2);
+
+            File file = new File(request.getServletContext().getRealPath("/Reports/GReport7.jrxml"));
             JasperReport jasperReports = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lista);
 

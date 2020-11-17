@@ -33,16 +33,11 @@
                             <tr>
                                 <th colspan="5">
                                     <h3>Clientes que no han realizado transacciones dentro de un intervalo de tiempo.</h3>
-                                    <form>
+                                    <form action="/Project_Banco/ControladorReporteG5" method="GET">
                                         <input type="date" name="f1" placeholder="Fecha 1">
                                         <input type="date" name="f2" placeholder="Fecha 2">
-                                        <input type="submit" class="btn btn-primary" value="Pre-Visualizar">
-                                    </form>
-                                    <%if ((request.getParameter("f1")) != null && (request.getParameter("f2")) != null) {%>
-                                    <form action="/Project_Banco/ControladorReporteG5" method="POST">
                                         <input type="submit" class="btn btn-primary" value="Descargar">
                                     </form>
-                                    <%}%>
                                     <%
                                         String fecha1 = request.getParameter("f1");
                                         String fecha2 = request.getParameter("f2");

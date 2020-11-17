@@ -35,7 +35,8 @@
                             <tr>
                                 <th colspan="5">
                                     <h3>Clientes con transacciones monetarias mayores a un límite establecido.</h3>
-                                    <form action="/Project_Banco/ControladorReporteG2" method="POST">
+                                    <form action="/Project_Banco/ControladorReporteG2" method="GET">
+                                        <input type="text" value="<%=codigo%>" name="cd" hidden>
                                         <input type="submit" class="btn btn-primary" value="Descargar">
                                     </form>
                                     <%

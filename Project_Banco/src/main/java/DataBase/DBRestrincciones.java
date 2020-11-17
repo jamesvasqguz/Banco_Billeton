@@ -47,6 +47,9 @@ public class DBRestrincciones {
                 } else if (horario.equals("VESPERTINO")) {
                     hora1 = "13:00";
                     hora2 = "22:00";
+                } else if (horario.equals("Toda hora")) {
+                    hora1 = "00:00";
+                    hora2 = "11:59";
                 }
 
                 System.out.println("hora1: " + hora1 + " hora2: " + hora2);

@@ -41,13 +41,25 @@
                             <a class="dropdown-item" href="Retiro.jsp">Retiro</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ReportesCajero.jsp">Reportes</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="CAReport1.jsp">Reporte 1</a>
+                            <a class="dropdown-item" href="CAReport2.jsp">Reporte 2</a>
+                        </div>
                     </li>
                     <%                        } else {
                     %>
-                    <li class="nav-item">
-                        <a class="nav-link" href="ReportesCajero.jsp">Reportes</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="CAReport1.jsp">Reporte 1</a>
+                            <a class="dropdown-item" href="CAReport2.jsp">Reporte 2</a>
+                        </div>
                     </li>
                     <%                        }%>
                 </ul>

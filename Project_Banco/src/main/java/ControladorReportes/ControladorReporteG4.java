@@ -3,6 +3,7 @@ package ControladorReportes;
 import Backend.GReporte4;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -23,6 +24,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.util.JRLoader;
 
 /**
  *
@@ -38,18 +40,15 @@ public class ControladorReporteG4 extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         try {
             response.setContentType("application/pdf");
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Reporte1.pdf");
-            Map<String, Object> parameters = new HashMap<>();
-            parameters.put("nombre", "James");
-            
-            JasperReport reporte = null;
-            String path = request.getServletContext().getRealPath("/Resources/JRGerente/GReporte4.jrxml");
-            //reporte = (JasperReport)JR
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=ReporteGerente4.pdf");
             List<GReporte4> lista = r4.cuentasMasDinero();
-            File file = new File(request.getServletContext().getRealPath("/Reports/GReporte4.jrxml"));
+
+            File file = new File(request.getServletContext().getRealPath("/Reports/GReport2.jrxml"));
             JasperReport jasperReports = JasperCompileManager.compileReport(file.getAbsolutePath());
             JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(lista);
 
+            Map<String, Object> parameters = new HashMap<>();
+            parameters.put("nombre", "James");
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReports, parameters, dataSource);
             JasperExportManager.exportReportToPdfStream(jasperPrint, response.getOutputStream());
 
